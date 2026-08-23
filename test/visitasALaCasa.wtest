@@ -1,6 +1,6 @@
-import model.casa.*
-import model.chicos.*
-import model.habitantes.*
+import casa.*
+import chicos.*
+import habitantes.*
 
 object saludador { 
 	var property saludo = ""

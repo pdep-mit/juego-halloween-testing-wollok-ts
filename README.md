@@ -1,4 +1,4 @@
-# Práctica grupal - PdeP MiT 2020
+# Práctica grupal - PdeP MiT 2026
 
 ## Objetivos
 

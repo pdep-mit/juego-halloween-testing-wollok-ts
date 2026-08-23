@@ -1,5 +1,5 @@
-import model.disfraces.*
-import model.chicos.*
+import disfraces.*
+import chicos.*
 
 describe "Cómo deberían verse Tito y Juanita cuando se disfrazan" {
 

@@ -1,6 +1,6 @@
-import model.habitantes.*
-import model.disfraces.*
-import model.casa.*
+import habitantes.*
+import disfraces.*
+import casa.*
 
 describe "Cuantos caramelos darían por un disfraz" {
 

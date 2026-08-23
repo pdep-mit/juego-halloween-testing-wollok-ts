@@ -1,5 +1,5 @@
-import model.casa.*
-import model.habitantes.*
+import casa.*
+import habitantes.*
 
 describe "Se terminó la diversión?" {
 	test "Se terminó la diversión si no hay más caramelos" {

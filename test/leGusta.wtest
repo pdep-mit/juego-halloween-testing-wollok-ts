@@ -1,5 +1,5 @@
-import model.disfraces.*
-import model.habitantes.*
+import disfraces.*
+import habitantes.*
 
 describe "Saber si a alguien le gusta un disfraz" {
 

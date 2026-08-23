@@ -1,6 +1,6 @@
-import game.movimientos.*
-import game.gameConfiguration.*
-import model.chicos.*
+import movimientos.*
+import gameConfiguration.*
+import chicos.*
 import wollok.game.*
 
 describe "Cómo se mueven y ubican los chicos en el juego" {

@@ -1,7 +1,7 @@
-import model.chicos.*
-import model.disfraces.*
-import model.habitantes.*
-import model.casa.*
+import chicos.*
+import disfraces.*
+import habitantes.*
+import casa.*
 
 import movimientos.*
 

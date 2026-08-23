@@ -1,7 +1,7 @@
-import model.chicos.*
-import model.disfraces.*
-import model.habitantes.*
-import model.casa.*
+import chicos.*
+import disfraces.*
+import habitantes.*
+import casa.*
 
 describe "Cuantos caramelos puede conseguir un chico en una casa" {
 	test "Rolo consigue un caramelo independientemente de quien abra la puerta" {
