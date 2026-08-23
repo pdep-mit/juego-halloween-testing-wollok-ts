@@ -13,7 +13,7 @@ describe "Lo que pasa al abrirle la puerta a un chico que visita la casa" {
 	const caosInicial = 5
 	const caramelosIniciales = 75
 	
-	fixture {
+	method initialize() {
 		casa.caos(caosInicial)
 		casa.quienAbreLaPuerta(sandra)
 		casa.caramelos(caramelosIniciales)
