@@ -1,0 +1,25 @@
+import model.chicos.*
+import model.disfraces.*
+import model.habitantes.*
+import model.casa.*
+
+describe "Cuantos caramelos puede conseguir un chico en una casa" {
+	test "Rolo consigue un caramelo independientemente de quien abra la puerta" {
+		assert.equals(1, rolo.cuantosCaramelosPuedeConseguir(sandra))
+	}
+	
+	test "Juanita puede conseguir 2 caramelos extra de quien abra la puerta" {
+		// TODO testear
+		assert.fail("Falta implementar")
+	}
+	
+	test "Tito puede conseguir tantos caramelos como Juanita si se disfrazan igual" {
+		// TODO testear
+		assert.fail("Falta implementar")
+	}
+	
+	test "Tito puede conseguir lo que da quien abre la puerta si se disfraza distinto de Juanita" {
+		// TODO testear
+		assert.fail("Falta implementar")
+	}
+}
