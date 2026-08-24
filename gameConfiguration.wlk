@@ -11,8 +11,6 @@ object config {
 	method alturaMaxima() = 10
 	method anchoMaximo() = 10
 	
-	method alturaSuelo() = self.alturaMaxima() / 2
-	
 	method configurarJuego(){
 		self.configurarVentana()
 		self.agregarComponentesVisuales()
@@ -28,12 +26,10 @@ object config {
 	}
 	
 	method agregarComponentesVisuales(){
-		game.addVisualIn(casa, game.at(self.anchoMaximo() - 2, self.alturaSuelo()))
+		game.addVisual(casa)
 		game.addVisual(rolo)
 		game.addVisual(tito)
 		game.addVisual(juanita)
-		
-		game.showAttributes(casa)
 	}
 	
 	method configurarAcciones(){
