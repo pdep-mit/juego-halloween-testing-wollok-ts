@@ -23,6 +23,7 @@ object config {
 		game.title("Halloween")
 		game.height(self.alturaMaxima())
 		game.width(self.anchoMaximo())
+		game.boardGround("noche-estrellada.png")
 	}
 	
 	method agregarComponentesVisuales(){
