@@ -1,3 +1,4 @@
+import casa.*
 import movimientos.*
 import gameConfiguration.*
 import chicos.*
@@ -74,7 +75,7 @@ describe "Cómo se mueven y ubican los chicos en el juego" {
 }
 describe "BONUS: movimientos tunneados" {
 	test "Si Rolo se mueve para arriba cuando se termina el suelo, se queda donde está" {
-		const posicionAntesDeMoverseParaArriba = game.at(0,config.alturaSuelo())
+		const posicionAntesDeMoverseParaArriba = game.at(0,casa.position().y())
 		rolo.position(posicionAntesDeMoverseParaArriba)
 		movimiento.mover(rolo, haciaArriba)
 		assert.equals(posicionAntesDeMoverseParaArriba, rolo.position())
