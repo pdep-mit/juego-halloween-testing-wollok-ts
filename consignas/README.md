@@ -11,9 +11,7 @@ El juego ya tiene configuradas las siguientes teclas:
 - Números **1, 2 y 3**: se usan para cambiar el disfraz de Tito.
 - Números **9 y 0**: se usan para cambiar el disfraz de Juanita.
 
-> Las configuración de las acciones para cambiar el disfraz están comentadas, deben descomentarse luego de definir los disfraces en el objeto `config` de `game/gameConfiguration.wlk`.
-
-Además se puede pasar con el mouse por encima de la casa para ver detalles del estado de ese objeto.
+> Las configuración de las acciones para cambiar el disfraz están comentadas, deben descomentarse luego de definir los disfraces en el objeto `config` de `gameConfiguration.wlk`.
 
 ## Dominio
 
@@ -34,7 +32,7 @@ Para determinar **cuántos caramelos podría conseguir** un chico de un habitant
 - Rolo (si decidiera pedir caramelos) podría conseguir 1 caramelo de lástima, sin importar quién sea la persona que abra la puerta.
 - La cantidad de caramelos que podría conseguir Tito en una casa equivale a la cantidad que podría conseguir su hermana menor si están disfrazados iguales. Si se disfrazó distinto, podría conseguir la cantidad de caramelos que da normalmente esa persona.
 
-Respecto a los disfraces que pueden usar Tito y/o Juanita, debemos contemplar los siguientes (deben definirse en `model/disfraces.wlk` y se espera poder referenciarlos globalmente con los nombres indicados):
+Respecto a los disfraces que pueden usar Tito y/o Juanita, debemos contemplar los siguientes (deben definirse en `disfraces.wlk` y se espera poder referenciarlos globalmente con los nombres indicados):
 - el disfraz de `venom` tiene 0 ternura y terror 8,
 - el disfraz de `superheroe` tiene ternura 5 y terror 0,
 - el disfraz de `ironman` tiene ternura 1 y terror 4,
@@ -79,7 +77,7 @@ Se espera poder:
   
   En el caso de que luego de esta visita se termine la diversión, se espera un saludo que es independiente de quién abrió la puerta: "¡Suficiente por hoy! Nos vamos a dormir."
   
-> Para estos requerimientos, pueden guiarse por los tests que están en los archivos: `saludos.wtest`, `movimientos.wtest` y `disfraces.wtest`. Los de los disfraces deben completarse acorde a lo indicado en el nombre del test.
+> Para estos requerimientos, pueden guiarse por los tests que están en los archivos: `saludos.wtest`, `movimientosYUbicaciones.wtest` y `comoSeVenLosDisfraces.wtest`. Los de los disfraces deben completarse acorde a lo indicado en el nombre del test.
 
 ## BONUS: Requerimientos adicionales por si quedaron manija
 
@@ -88,4 +86,4 @@ Modificar la lógica de movimiento de modo que:
   - Rolo y Tito no puedan subir más arriba del suelo, donde se encuentra la casa.
   - Si un personaje que se encuentra en el borde derecho o izquierdo de la pantalla se mueve por fuera de la misma, hacer que aparezca del otro lado (porque dio la vuelta a la manzana). Esto también implica que si Tito se encuentra en el borde izquierdo, Juanita debería aparecer en el extremo derecho, a la misma altura que Tito.
   
-> Ver el archivo `game/movimientos.wlk`. Tal vez sea útil el objeto `config` de `game/gameConfiguration.wlk`.
+> Ver el archivo `movimientos.wlk`, además del describe BONUS en `movimientosYUbicaciones.wtest`.
