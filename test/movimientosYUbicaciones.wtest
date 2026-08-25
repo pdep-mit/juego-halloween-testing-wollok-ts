@@ -4,6 +4,8 @@ import gameConfiguration.*
 import chicos.*
 import wollok.game.*
 
+// Dificultad: Fácil!
+
 describe "Cómo se mueven y ubican los chicos en el juego" {
 	test "Rolo arranca en la posición (0,0)"{
 		assert.equals(game.origin(), rolo.position())

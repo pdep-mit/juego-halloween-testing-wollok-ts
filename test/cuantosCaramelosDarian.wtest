@@ -2,6 +2,8 @@ import habitantes.*
 import disfraces.*
 import casa.*
 
+// Dificultad: Intermedia
+
 describe "Cuantos caramelos darían por un disfraz" {
 
 	test "Azucena da 5 caramelos cuando no le gusta el disfraz" {
@@ -23,7 +25,7 @@ describe "Cuantos caramelos darían por un disfraz" {
 		assert.fail("Falta implementar")
 	}
 	
-	test "Jorge da 10 caramelos cuando hay muchos en la casa" {
+	test "Jorge da 10 caramelos cuando hay muchos caramelos en la casa" {
 		// TODO testear
 		assert.fail("Falta implementar")
 	}

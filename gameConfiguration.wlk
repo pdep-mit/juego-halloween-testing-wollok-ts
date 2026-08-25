@@ -63,8 +63,12 @@ object config {
 	method configurarValidacionDeFinDeJuego(){
 		game.onTick(2 * 1000, "fin?", { 
 			if(casa.seTerminoLaDiversion())
-				game.stop() 
+				self.mostrarFinDelJuego()
 		})
 	}
 	
+	method mostrarFinDelJuego() {
+		// TODO: Hacer que aparezca un cartel con texto
+		// BONUS: Habilitar opcion para reiniciar el juego
+	}
 }

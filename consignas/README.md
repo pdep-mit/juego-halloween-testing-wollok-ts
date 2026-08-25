@@ -69,7 +69,9 @@ Se espera poder:
 
 - Rolo y Tito deben poder moverse de forma independiente, pero Juanita siempre debe moverse a la par de Tito. Se espera que **siempre** se encuentre una celda a la izquierda de su hermano.
 - Al cambiar el disfraz que usan Tito y Juanita, la imagen de cada personaje debe cambiar adecuadamente (siguiendo la convención `personaje-disfraz.png`). Ver las imágenes disponibles en la carpeta **assets** en caso de dudas.
-- Saber si se terminó la diversión, que se cumple si no hay más caramelos en la casa o si su nivel de caos es mayor a 20. Esto determinará el fin del juego.
+- Saber si se terminó la diversión, que se cumple si no hay más caramelos en la casa o si su nivel de caos es mayor a 20. Esto determinará el fin del juego. ¿Qué implica que termine el juego?
+  - Se espera que se muestre un cartel explicando que el juego terminó
+  - BONUS: Hacer que se pueda reiniciar el juego tocando una tecla que ustedes determinen (ver más abajo)
 - Cuando un chico pasa por la puerta de la casa, además de realizar la lógica correspondiente a la visita a la casa que dependerá de quién sea el chico y el habitante que abrió la puerta como se explicó anteriormente, se debe mostrar un saludo saliendo de la casa que dependerá de quién fue que abrió la puerta.
   - Azucena siempre se hace la asustada y dice "¡Ay, qué miedo! Jaja".
   - Sandra saluda con un "¡Pasalo lindo y no hagas lío!" cuando la casa está en orden, y con un "¬¬" cuando no lo está.
@@ -81,9 +83,26 @@ Se espera poder:
 
 ## BONUS: Requerimientos adicionales por si quedaron manija
 
+### Reinicio de juego
+
+El juego de base no tiene forma de reiniciar el estado para arrancar nuevamente de cero. Agregar una configuración más de teclado, eligiendo la tecla que prefieran para este objetivo, que si se presiona, vuelva a configurar el juego con los objetos en su estado inicial.
+
+### Mejorar los movimientos de los chicos
+
 Modificar la lógica de movimiento de modo que:
   - Rolo y Tito no puedan bajar más allá del y = 0.
   - Rolo y Tito no puedan subir más arriba del suelo, donde se encuentra la casa.
   - Si un personaje que se encuentra en el borde derecho o izquierdo de la pantalla se mueve por fuera de la misma, hacer que aparezca del otro lado (porque dio la vuelta a la manzana). Esto también implica que si Tito se encuentra en el borde izquierdo, Juanita debería aparecer en el extremo derecho, a la misma altura que Tito.
   
 > Ver el archivo `movimientos.wlk`, además del describe BONUS en `movimientosYUbicaciones.wtest`.
+
+### Elementos visuales para el estado de la casa
+
+Las consignas no indican cómo graficar el caos y la cantidad de caramelos que quedan en la casa.
+Una forma simple puede ser agregar un componente visual donde se muestre esta información como texto en la parte superior de la pantalla, pero son libres de ponerse creativos.
+
+Por ejemplo, el nivel de caos podría traducirse en basura tirada cerca de la casa, y a mayor nivel de caos, más basura podría mostrarse en escena. Lo que les genere curiosidad para tratar de resolver, háganlo, suena como un planazo!
+
+### Sonidos
+
+Pueden agregar un sonido asociado a cada habitante de la casa, para ayudar a distinguir quién fue que abrió la puerta en cada oportunidad, más allá de lo que se pueda deducir por el texto del saludo.

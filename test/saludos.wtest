@@ -1,6 +1,8 @@
 import casa.*
 import habitantes.*
 
+// Dificultad: Fácil!
+
 describe "Se terminó la diversión?" {
 	test "Se terminó la diversión si no hay más caramelos" {
 		casa.caramelos(0)
@@ -16,6 +18,7 @@ describe "Se terminó la diversión?" {
 		assert.notThat(casa.seTerminoLaDiversion())
 	}
 }
+
 describe "Saludo a mostrar luego de una visita a la casa" {
 	test "Saludo cuando la que abre la puerta es Azucena" {
 		casa.quienAbreLaPuerta(azucena)

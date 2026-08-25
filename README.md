@@ -10,6 +10,18 @@
 
 ## Modalidad de trabajo
 
+### Eligiendo qué problemas atender
+
+Las consignas se encuentran en el archivo `consignas/README.md`. No son fáciles de "repartir", están interconectadas. Pónganse de acuerdo en cómo encarar los requerimientos, y trabajen en conjunto en pos de completarlos gradualmente. Es más fácil repartirse objetos a implementar luego de decidir su interfaz, que tratar de repartirse requerimientos completos y esperar que todo funcione.  
+
+También conviene ponerse pequeños objetivos entre ustedes, no hace falta tratar de lograr perfección en la lógica general a la primera. La lógica de dominio es intencionalmente rebuscada. Los tests están para ayudarles a identificar las cosas que les faltan resolver: son una ayuda, no una carga!
+
+> Consejo: Identifiquen problemas sencillos que puedan ayudarles a avanzar en la dirección correcta, luego pueden seguir iterando la solución guiándose por las pruebas. Si necesitan ayuda para ordenarse, el equipo docente puede darles una mano!
+
+Como guía del pulgar, hay problemas tienen menos dependencias, por lo tanto son buenos candidatos como puntos de partida. Para ayudar a identificar estos buenos primeros sub-problemas, les dejamos un comentario en los distintos archivos de tests para que sepan por dónde arrancar...
+
+### Uso prolijo de git
+
 Luego de importar el proyecto en el IDE, cada integrante debería...
 - Correr todos los tests del proyecto, para conocer la situación actual
 - Elegir un problemita chico para resolver (incluyendo los tests asociados en caso de no estar ya implementados)
@@ -26,12 +38,12 @@ Luego de importar el proyecto en el IDE, cada integrante debería...
 Tips para evitar conflictos durante la práctica:
   1. ¡Hablarse! coordinen qué problemita agarrar a continuación, avisen al resto cuando suben cambios al repo
   2. Asegurar que las iteraciones sean lo más cortas posibles. Commits chicos -> menos chances de pisarse.
-  
-> Las consignas se encuentran en el archivo `consignas/README.md`. No son fáciles de "repartir", están interconectadas. Pónganse de acuerdo en cómo encarar los requerimientos, y trabajen en conjunto en pos de completarlos gradualmente. Es más fácil repartirse objetos a implementar luego de decidir la interfaz que requerimientos completos.   
 
 ## Cómo probar el programa
 
 Lo que más nos va a interesar inicialmente es el **testeo automático**, podés encontrar todas las pruebas en varios archivos dentro de la carpeta `test`. Se pueden correr todos los tests de un archivo .wtest (abriendo ese archivo, con las opciones "Ejecutar todos los tests" y "Ejecutar describre" integradas al IDE), así como también todos los tests del proyecto (usando el comando "Wollok: Run all tests" desde la paleta de comandos del VSCode). Se recomienda correr todos los tests del proyecto para esta ejercitación.
+
+> ATENCIÓN: No todos los archivos de tests vienen con las pruebas completas! Por ejemplo, `comoSeVenLosDisfraces.wtest` ya tiene las pruebas fiales, mientras que `leGusta.wtest` tiene los casos de prueba explicitados pero la implementación de cada test la tienen que desarrollar ustedes.
 
 Una vez que avancen lo suficiente con lo que se pide desarrollar, la idea es que empiecen a ver el resultado de su trabajo mediante la interfaz gráfica de Wollok Game.
 

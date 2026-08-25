@@ -1,6 +1,8 @@
 import disfraces.*
 import habitantes.*
 
+// Dificultad: Fácil!
+
 describe "Saber si a alguien le gusta un disfraz" {
 
 	test "A azucena no le gustan los disfraces que no son adorables" {

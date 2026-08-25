@@ -2,6 +2,8 @@ import casa.*
 import chicos.*
 import habitantes.*
 
+// Dificultad: Alta!!!
+
 object saludador { 
 	var property saludo = ""
 	method say(quien, texto){
