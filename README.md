@@ -43,7 +43,7 @@ Tips para evitar conflictos durante la práctica:
 
 Lo que más nos va a interesar inicialmente es el **testeo automático**, podés encontrar todas las pruebas en varios archivos dentro de la carpeta `test`. Se pueden correr todos los tests de un archivo .wtest (abriendo ese archivo, con las opciones "Ejecutar todos los tests" y "Ejecutar describre" integradas al IDE), así como también todos los tests del proyecto (usando el comando "Wollok: Run all tests" desde la paleta de comandos del VSCode). Se recomienda correr todos los tests del proyecto para esta ejercitación.
 
-> ATENCIÓN: No todos los archivos de tests vienen con las pruebas completas! Por ejemplo, `comoSeVenLosDisfraces.wtest` ya tiene las pruebas fiales, mientras que `leGusta.wtest` tiene los casos de prueba explicitados pero la implementación de cada test la tienen que desarrollar ustedes.
+> ATENCIÓN: No todos los archivos de tests vienen con las pruebas completas! Por ejemplo, `saludos.wtest` ya tiene las pruebas finales, mientras que `leGusta.wtest` tiene los casos de prueba explicitados pero la implementación de cada test la tienen que desarrollar ustedes.
 
 Una vez que avancen lo suficiente con lo que se pide desarrollar, la idea es que empiecen a ver el resultado de su trabajo mediante la interfaz gráfica de Wollok Game.
 
