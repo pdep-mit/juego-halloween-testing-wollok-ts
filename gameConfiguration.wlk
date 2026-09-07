@@ -54,13 +54,7 @@ object config {
 			casa.teVisita(alguien, game)
 		})
 
-		game.onCollideDo(vestidorDeSuperheroes, { alguien =>
-			vestidorDeSuperheroes.vestir(alguien)
-		})
-
-		game.onCollideDo(vestidorDeAntiheroes, { alguien =>
-			vestidorDeAntiheroes.vestir(alguien)
-		})
+		// TODO: Agregar colisiones para los vestidores
 	}
 
 	method configurarValidacionDeFinDeJuego(){

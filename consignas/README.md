@@ -56,7 +56,7 @@ En el barrio hay dos vestidores: `vestidorDeSuperheroes` y `vestidorDeAntiheroes
 - En el vestidor de antihéroes, Tito sale disfrazado de `venom` y Juanita de `harleyQuinn`.
 - Rolo puede pasar por cualquiera de los dos, pero él no se disfraza, así que sale igual que como entró.
 
-> Ojo con la tentación de que el vestidor pregunte quién es el chico que pasó. El vestidor sabe qué **tipo** de disfraz ofrece; cada chico sabe cuál es *su* disfraz de ese tipo, o que directamente no se disfraza.
+> Ojo con la tentación de que el vestidor pregunte quién es el chico que pasó. El vestidor sabe qué **tipo** de disfraz ofrece; cada chico sabe cuál es *su* disfraz de ese tipo, o que directamente no se disfraza. Ya se propone una interfaz para los chicos y para los vestidores que debería facilitarles resolver este problema difícil 😉
 
 Como Juanita va siempre una celda a la izquierda de Tito, cada hermano pisa el vestidor en un momento distinto: se cambian por separado, no juntos.
 
