@@ -1,36 +1,73 @@
 import habitantes.*
 import disfraces.*
+import chicos.*
 import casa.*
 
 // Dificultad: Intermedia
 
-describe "Cuantos caramelos darían por un disfraz" {
+/*
+ * ¡LEER ESTO ANTES DE ARRANCAR CON LOS TESTS DE JORGE!
+ *
+ * Jorge da un número al azar de caramelos cuando la casa está bien provista.
+ * Eso es un problema para las pruebas: si el resultado cambia cada vez que corremos
+ * el test, no hay ningún valor contra el cual comparar.
+ *
+ * La solución no es dejar de testearlo, ni conformarse con probar que el número caiga
+ * en algún rango. La solución es que Jorge NO tire los dados por su cuenta: él le pide
+ * el número a un colaborador (su `generadorDeAzar`), y como ese colaborador se le puede
+ * cambiar, en las pruebas le enchufamos uno que siempre devuelve lo mismo.
+ *
+ * A un objeto así, hecho a propósito para usar en una prueba, se lo llama "doble de
+ * prueba". Ya hay otro dando vueltas por el proyecto: el `saludador` de
+ * `visitasALaCasa.wtest`. La diferencia es cómo se lo pasamos al objeto que estamos
+ * probando: al saludador se lo pasamos por parámetro, y a éste se lo seteamos.
+ *
+ * Este es el nuestro, ya está listo para usar:
+ */
+object azarTrucho {
+	var property valor = 7
+	method numeroEntre(unMinimo, unMaximo) = valor
+}
 
-	test "Azucena da 5 caramelos cuando no le gusta el disfraz" {
+describe "Cuántos caramelos quiere darle cada habitante a un chico" {
+
+	test "Azucena da 5 caramelos cuando no le gusta el disfraz del chico" {
 		// TODO testear
 		assert.fail("Falta implementar")
 	}
-	
-	test "Azucena da tantos caramelos como ternura cuando le gusta el disfraz" {
+
+	test "Azucena da tantos caramelos como ternura tenga el disfraz cuando le gusta" {
 		// TODO testear
 		assert.fail("Falta implementar")
 	}
-	
+
 	test "Sandra da 8 caramelos cuando la casa está en orden" {
 		// TODO testear
 		assert.fail("Falta implementar")
 	}
+
 	test "Sandra da 2 caramelos cuando la casa no está en orden" {
 		// TODO testear
 		assert.fail("Falta implementar")
 	}
-	
-	test "Jorge da 10 caramelos cuando hay muchos caramelos en la casa" {
-		// TODO testear
+
+	// Este test ya está resuelto: es el ejemplo de cómo usar el doble de prueba.
+	test "Jorge da lo que le diga el azar cuando hay muchos caramelos en la casa" {
+		jorge.generadorDeAzar(azarTrucho)
+		azarTrucho.valor(7)
+		casa.caramelos(50)
+
+		assert.equals(7, jorge.quiereDarleA(tito))
+	}
+
+	test "Jorge da 4 caramelos cuando quedan pocos caramelos en la casa" {
+		// TODO testear. Este no necesita el doble: acá Jorge no depende del azar.
 		assert.fail("Falta implementar")
 	}
-	test "Jorge da 4 caramelos cuando hay menos caramelos en la casa" {
-		// TODO testear
+
+	test "Jorge ni le pregunta al azar cuando quedan pocos caramelos en la casa" {
+		// TODO testear. Pista: si el doble devolviera un valor bien distinto de 4
+		// y Jorge igual diera 4, es porque no le preguntó.
 		assert.fail("Falta implementar")
 	}
 }

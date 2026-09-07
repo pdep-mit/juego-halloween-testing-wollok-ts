@@ -1,0 +1,45 @@
+import chicos.*
+import disfraces.*
+import vestidores.*
+
+// Dificultad: Fácil!
+
+describe "Qué pasa cuando un chico pasa por un vestidor" {
+
+	test "Si Tito pasa por el vestidor de antihéroes se disfraza de Venom" {
+		vestidorDeAntiheroes.vestir(tito)
+		assert.equals(venom, tito.disfraz())
+	}
+
+	test "Si Juanita pasa por el vestidor de antihéroes se disfraza de Harley Quinn" {
+		vestidorDeAntiheroes.vestir(juanita)
+		assert.equals(harleyQuinn, juanita.disfraz())
+	}
+
+	test "Si Tito pasa por el vestidor de superhéroes se disfraza de superhéroe" {
+		// TODO testear
+		assert.fail("Falta implementar")
+	}
+
+	test "Si Juanita pasa por el vestidor de superhéroes se disfraza de superhéroe" {
+		// TODO testear
+		assert.fail("Falta implementar")
+	}
+
+	test "Tito y Juanita se cambian por su cuenta: pasa uno y el otro queda como estaba" {
+		vestidorDeAntiheroes.vestir(tito)
+		assert.equals(superheroe, juanita.disfraz())
+	}
+}
+
+describe "Rolo no se disfraza" {
+
+	test "Rolo puede pasar por el vestidor de antihéroes sin que se rompa nada" {
+		assert.doesNotThrowException({ vestidorDeAntiheroes.vestir(rolo) })
+	}
+
+	test "Rolo se sigue viendo igual después de pasar por un vestidor" {
+		// TODO testear: ¿qué imagen tiene que seguir mostrando Rolo?
+		assert.fail("Falta implementar")
+	}
+}

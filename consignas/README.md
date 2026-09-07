@@ -1,108 +1,144 @@
 # Halloween
 
-Queremos hacer un programa en objetos que modele el comportamiento de los chicos del vecindario (Rolo, Tito y Juanita) cuando visitan una casa para pedir caramelos y/o hacer bullicio en Halloween. Este programa a su vez va a tener una interfaz gráfica que nos permitirá jugar con nuestros objetos.
+Queremos hacer un programa en objetos que modele el comportamiento de los chicos del vecindario (Rolo, Tito y Juanita) cuando salen a pedir caramelos y a hacer bullicio en Halloween. Este programa a su vez va a tener una interfaz gráfica que nos permitirá jugar con nuestros objetos.
 
-## Acciones del teclado
+## Cómo se juega
+
+El tablero es el barrio de noche: 10 celdas de ancho por 10 de alto. Arriba a la derecha está la **casa** donde se piden los caramelos, y en el medio del barrio hay dos **vestidores** donde los chicos pueden cambiarse el disfraz. Los tres chicos arrancan abajo a la izquierda.
+
+La gracia es pasear por el barrio, elegir con qué disfraz presentarse y pasar por la casa a pedir caramelos, hasta que se termine la diversión.
 
 El juego ya tiene configuradas las siguientes teclas:
 - **Flechas** arriba, abajo, izquierda y derecha: se usan para que el personaje controlado se mueva.
 - Letra **t**: Tito pasa a ser el personaje controlado.
 - Letra **r**: Rolo pasa a ser el personaje controlado.
-- Números **1, 2 y 3**: se usan para cambiar el disfraz de Tito.
-- Números **9 y 0**: se usan para cambiar el disfraz de Juanita.
 
-> Las configuración de las acciones para cambiar el disfraz están comentadas, deben descomentarse luego de definir los disfraces en el objeto `config` de `gameConfiguration.wlk`.
+> Juanita no se controla con el teclado: ella va siempre pegada a su hermano. Y no hay teclas para cambiarse de disfraz: eso pasa solo, cuando los chicos pisan un vestidor.
 
-## Dominio
+## Los personajes
 
 Los chicos que tenemos que modelar para nuestro juego son:
 - **Tito**, que cuando visita una casa pide caramelos y aumenta el caos de la misma en una unidad.
-- **Juanita**, la hermana menor de Tito, cuando visita una casa sólo pide caramelos.
-- **Rolo**, que no está interesado en los caramelos por eso ni se disfraza; cuando visita una casa lo único que hace es aumentar su caos en 5 unidades.
+- **Juanita**, la hermana menor de Tito, que cuando visita una casa sólo pide caramelos.
+- **Rolo**, que no está interesado en los caramelos por eso ni se disfraza; cuando visita una casa lo único que hace es aumentar el caos en 5 unidades.
 
-La casa que vamos a usar para nuestro juego tiene 3 habitantes, que se van rotando para abrir la puerta y dar caramelos a los chicos que los pidan. Los habitantes de la casa son:
-- **Azucena**, que si le gusta el disfraz da el equivalente a la ternura del mismo en caramelos, o 5 si no le gusta. Le gustan los disfraces adorables (aquellos que tienen ternura mayor a 6 y terror menor a 4).
-- **Jorge**, que da 10 caramelos si hay al menos 50 caramelos en la casa, de lo contrario baja su ración a 4. Le gustan los disfraces con terroríficos (aquellos que tienen terror mayor o igual a 8).
-- **Sandra**, que da 8 caramelos cuando la casa está en orden (si su nivel de caos es menor a 3), caso contrario da 2 caramelos. Le gustan los disfraces que son más tiernos que aterradores.
+La casa que vamos a usar para nuestro juego tiene 3 habitantes, que se van rotando para abrir la puerta y dar caramelos a los chicos que los pidan:
+- **Azucena**, la única a la que le importa de qué viene disfrazado el chico.
+- **Jorge**, que es medio manirroto cuando la despensa está llena.
+- **Sandra**, que da según cómo esté la casa.
 
-Cuando un chico **pide caramelos**, el total de caramelos que hay en la casa disminuye en el **mínimo entre la cantidad de caramelos que puede conseguir y la cantidad de caramelos que efectivamente hayan en la casa**.
+Inicialmente hay 100 caramelos en la casa, un nivel 0 de caos y es Azucena quien abre la puerta.
 
-Para determinar **cuántos caramelos podría conseguir** un chico de un habitante se siguen estas reglas:
-- Juanita podría conseguir 2 caramelos más de los que daría normalmente la persona.
-- Rolo (si decidiera pedir caramelos) podría conseguir 1 caramelo de lástima, sin importar quién sea la persona que abra la puerta.
-- La cantidad de caramelos que podría conseguir Tito en una casa equivale a la cantidad que podría conseguir su hermana menor si están disfrazados iguales. Si se disfrazó distinto, podría conseguir la cantidad de caramelos que da normalmente esa persona.
+## Requerimientos
 
-Respecto a los disfraces que pueden usar Tito y/o Juanita, debemos contemplar los siguientes (deben definirse en `disfraces.wlk` y se espera poder referenciarlos globalmente con los nombres indicados):
-- el disfraz de `venom` tiene 0 ternura y terror 8,
+### 1. Movernos por el barrio
+
+- Rolo y Tito deben poder moverse de forma independiente, pero Juanita siempre debe moverse a la par de Tito. Se espera que **siempre** se encuentre una celda a la izquierda de su hermano.
+- Rolo y Tito no pueden bajar más allá del y = 0.
+- Rolo y Tito no pueden subir más arriba del suelo, donde se encuentra la casa.
+- Si un personaje que se encuentra en el borde derecho o izquierdo de la pantalla se mueve por fuera de la misma, tiene que aparecer del otro lado (porque dio la vuelta a la manzana). Esto también implica que si Tito se encuentra en el borde izquierdo, Juanita debería aparecer en el extremo derecho, a la misma altura que Tito.
+
+> Ver el archivo `movimientos.wlk`: ahí cada dirección sabe cuál es la posición siguiente a una posición dada, y por ahora ninguna se hace cargo de su borde. Las pruebas están en `movimientosYUbicaciones.wtest`.
+
+> Antes de resolver a mano lo de Juanita en el borde izquierdo, miren si no hay ya algún objeto en el proyecto que sepa hacer exactamente eso.
+
+### 2. Los vestidores y los disfraces
+
+Los disfraces que pueden usar Tito y/o Juanita son los siguientes. Cada uno sabe cuánta **ternura** y cuánto **terror** genera, y además sabe su **nombre**:
 - el disfraz de `superheroe` tiene ternura 5 y terror 0,
-- el disfraz de `ironman` tiene ternura 1 y terror 4,
+- el disfraz de `venom` tiene 0 ternura y terror 8,
 - el disfraz de `harleyQuinn` tiene ternura 9 y terror 2.
 
-> Tanto Tito como Juanita deberían usar el disfraz de `superheroe` al iniciar el juego, pero deberían poder cambiar su disfraz independientemente al mandarles el mensaje `disfraz(nuevoDisfraz)`.
+Tanto Tito como Juanita usan el disfraz de `superheroe` al iniciar el juego, y pueden cambiarlo mandándoles el mensaje `disfraz(nuevoDisfraz)`.
+
+En el barrio hay dos vestidores: `vestidorDeSuperheroes` y `vestidorDeAntiheroes`. Cuando un chico pasa por encima de uno, el vestidor lo viste (`vestir(unChico)`), y lo que pasa entonces depende de a quién le tocó:
+- En el vestidor de superhéroes, tanto Tito como Juanita salen disfrazados de `superheroe`.
+- En el vestidor de antihéroes, Tito sale disfrazado de `venom` y Juanita de `harleyQuinn`.
+- Rolo puede pasar por cualquiera de los dos, pero él no se disfraza, así que sale igual que como entró.
+
+> Ojo con la tentación de que el vestidor pregunte quién es el chico que pasó. El vestidor sabe qué **tipo** de disfraz ofrece; cada chico sabe cuál es *su* disfraz de ese tipo, o que directamente no se disfraza.
+
+Como Juanita va siempre una celda a la izquierda de Tito, cada hermano pisa el vestidor en un momento distinto: se cambian por separado, no juntos.
+
+Por último, al cambiar el disfraz que usan Tito y Juanita, la imagen de cada personaje debe cambiar adecuadamente, siguiendo la convención `personaje-disfraz.png`. Ver las imágenes disponibles en la carpeta **assets** en caso de dudas.
+
+> Ver `disfraces.wlk`, `chicos.wlk` y `vestidores.wlk`. Las pruebas están en `cambiarseDeDisfraz.wtest` y `comoSeVenLosDisfraces.wtest`; las de los disfraces deben completarse acorde a lo indicado en el nombre del test.
+
+### 3. Cuántos caramelos quiere dar cada habitante
+
+Todos los habitantes entienden `quiereDarleA(unChico)`, pero cada uno lo decide a su manera:
+
+- **Azucena** da el equivalente a la ternura del disfraz del chico si le gusta ese disfraz, o 5 si no le gusta. Le gustan los disfraces adorables (aquellos que tienen ternura mayor a 6 y terror menor a 4).
+- **Jorge** da un número al azar entre 5 y 15 cuando hay al menos 50 caramelos en la casa; de lo contrario baja su ración a 4.
+- **Sandra** da 8 caramelos cuando la casa está en orden (si su nivel de caos es menor a 3), caso contrario da 2 caramelos.
+
+Notar que **la única que necesita mirar al chico es Azucena**: a Jorge y a Sandra les da exactamente lo mismo quién les toque y de qué venga disfrazado. Así y todo, los tres entienden el mismo mensaje.
+
+Sobre el azar de Jorge: él no tira los dados por su cuenta, se lo pide a un colaborador que sabe dar números al azar. Y ese colaborador **se le puede cambiar** (es su `generadorDeAzar`), justamente para que en las pruebas podamos ponerle uno que sea predecible y así saber contra qué comparar.
+
+> Definir las pruebas necesarias en `leGusta.wtest` y `cuantosCaramelosDarian.wtest`. **Antes de arrancar con los tests de Jorge, leer el comentario que está arriba del describe en `cuantosCaramelosDarian.wtest`**: explica la técnica y ya les deja armado el colaborador predecible que van a necesitar. Uno de los tests de Jorge viene resuelto como ejemplo.
+
+### 4. La visita a la casa
 
 Cada vez que la casa recibe la visita de un chico debería pasar lo siguiente:
 - Se abre la puerta, y en consecuencia el chico pide caramelos y/o hace bullicio.
-- El habitante de la casa que le abrió se despide (como se explica en los requerimientos de juego más adelante).
-- Se cierra la puerta, luego de lo cual quien abrió tendrá la oportunidad de hacer algo antes de irse, y además debería cambiar quién abrirá la puerta a continuación.
-  - Si quien abrió fue Azucena y quedan al menos 5 caramelos en la casa, se come uno.
-  - Si quien abrió fue Jorge, acomoda un poco la casa bajando en 2 unidades el nivel de caos.
-  - Sandra no hace nada en particular luego de despedirse.
+- Se muestra un saludo saliendo de la casa, que depende de quién fue que abrió la puerta.
+- Le pasa el turno al siguiente habitante: una vez que los 3 hayan atendido a las visitas (primero Azucena, luego Jorge y luego Sandra), le debería tocar nuevamente a Azucena.
 
-Inicialmente hay 100 caramelos en la casa, un nivel 0 de caos y es Azucena quien abre la puerta. 
-Una vez que los 3 hayan atendido a las visitas (primero Azucena, luego Jorge y luego Sandra), le debería tocar nuevamente a Azucena.
+Cuando un chico **pide caramelos**, la casa le entrega lo que el habitante que abrió la puerta quiera darle... salvo que no le alcance. Si el habitante quiere darle 10 caramelos y en la casa quedan sólo 3, el chico se lleva esos 3 y la casa se queda sin nada. Nunca se puede entregar más de lo que hay.
 
-## Requerimientos de dominio
+Los saludos que se muestran son:
+- Azucena siempre se hace la asustada y dice "¡Ay, qué miedo! Jaja".
+- Sandra saluda con un "¡Pasalo lindo y no hagas lío!" cuando la casa está en orden, y con un "¬¬" cuando no lo está.
+- Jorge saluda con un "¡Feliz Navidad!".
 
-Se espera poder:
+En el caso de que luego de esta visita se termine la diversión, se espera un saludo que es independiente de quién abrió la puerta: "¡Suficiente por hoy! Nos vamos a dormir."
 
-- Determinar para cada **habitante** de la casa si le gusta un **disfraz**.
-- Determinar cuántos caramelos daría cada **habitante** de la casa en base a un **disfraz**, teniendo en cuenta que dependerá en algunos casos del estado de la casa.
-- Determinar cuántos caramelos podría conseguir cada **chico** con los distintos **habitantes** de la casa. Probar esto considerando las distintas combinaciones posibles de chicos y habitantes, teniendo en cuenta que la forma en la que se disfrazan Tito y Juanita, la cantidad de caramelos de la casa y el caos de la misma podría llevar a distintos resultados.
+En el juego, la visita se dispara sola cuando un chico pasa por la puerta de la casa; eso ya está configurado.
 
-> Definir las pruebas necesarias para estos problemas en los archivos `leGusta.wtest`, `cuantosCaramelosDarian.wtest` y `cuantosCaramelosPuedenConseguir.wtest`.
+> Las pruebas ya están armadas en `visitasALaCasa.wtest` y `saludos.wtest`.
 
-- Hacer que la **casa** sea visitada por alguno de los **chicos**.
+### 5. La casa en pantalla
 
-> Las pruebas ya están armadas en el archivo `visitasALaCasa.wtest`.
+Toda la información del estado de la casa está hoy escondida en los objetos. Queremos poder verla mientras jugamos:
 
-## Requerimientos de juego
+- Los caramelos que quedan en la casa se muestran arriba a la izquierda de la pantalla, como un texto que dice `Caramelos: 100`, y que va bajando a medida que los chicos se los llevan. Para eso está el objeto `contadorDeCaramelos`: es un componente visual que no tiene imagen, lo único que muestra es su texto.
+- La imagen de la casa cambia según cuánto caos tenga:
+  - `casa.png` mientras la casa está en orden,
+  - `casa-desordenada.png` cuando el caos llegó a 3 pero todavía es menor a 10,
+  - `casa-embrujada.png` de 10 para arriba.
 
-- Rolo y Tito deben poder moverse de forma independiente, pero Juanita siempre debe moverse a la par de Tito. Se espera que **siempre** se encuentre una celda a la izquierda de su hermano.
-- Al cambiar el disfraz que usan Tito y Juanita, la imagen de cada personaje debe cambiar adecuadamente (siguiendo la convención `personaje-disfraz.png`). Ver las imágenes disponibles en la carpeta **assets** en caso de dudas.
-- Saber si se terminó la diversión, que se cumple si no hay más caramelos en la casa o si su nivel de caos es mayor a 20. Esto determinará el fin del juego. ¿Qué implica que termine el juego?
-  - Se espera que se muestre un cartel explicando que el juego terminó
-  - BONUS: Hacer que se pueda reiniciar el juego tocando una tecla que ustedes determinen (ver más abajo)
-- Cuando un chico pasa por la puerta de la casa, además de realizar la lógica correspondiente a la visita a la casa que dependerá de quién sea el chico y el habitante que abrió la puerta como se explicó anteriormente, se debe mostrar un saludo saliendo de la casa que dependerá de quién fue que abrió la puerta.
-  - Azucena siempre se hace la asustada y dice "¡Ay, qué miedo! Jaja".
-  - Sandra saluda con un "¡Pasalo lindo y no hagas lío!" cuando la casa está en orden, y con un "¬¬" cuando no lo está.
-  - Jorge saluda con un "¡Feliz Navidad!".
-  
-  En el caso de que luego de esta visita se termine la diversión, se espera un saludo que es independiente de quién abrió la puerta: "¡Suficiente por hoy! Nos vamos a dormir."
-  
-> Para estos requerimientos, pueden guiarse por los tests que están en los archivos: `saludos.wtest`, `movimientosYUbicaciones.wtest` y `comoSeVenLosDisfraces.wtest`. Los de los disfraces deben completarse acorde a lo indicado en el nombre del test.
+> Las pruebas están en `comoSeVeLaCasa.wtest`.
+
+> Las imágenes de la casa desordenada y embrujada son provisorias, están para que el juego arranque. Si les pinta dibujar unas mejores, adelante.
+
+### 6. Se terminó la diversión
+
+Saber si se terminó la diversión, que se cumple si no hay más caramelos en la casa o si su nivel de caos es mayor a 20. Esto determina el fin del juego. ¿Qué implica que termine el juego?
+- Se espera que se muestre un cartel explicando que el juego terminó.
+- Además cambia el saludo de la casa, como se explicó en el punto anterior.
+
+> Las pruebas de cuándo se termina la diversión están en `saludos.wtest`. El cartel hay que armarlo en el método `mostrarFinDelJuego()` de `gameConfiguration.wlk`.
 
 ## BONUS: Requerimientos adicionales por si quedaron manija
+
+### La despedida de los habitantes
+
+Después de saludar y antes de que le toque al siguiente, el habitante que abrió la puerta podría hacer algo más:
+  - Si quien abrió fue Azucena y quedan al menos 5 caramelos en la casa, se come uno.
+  - Si quien abrió fue Jorge, acomoda un poco la casa bajando en 2 unidades el nivel de caos.
+  - Sandra no hace nada en particular.
+
+> Ver el describe BONUS en `visitasALaCasa.wtest`.
 
 ### Reinicio de juego
 
 El juego de base no tiene forma de reiniciar el estado para arrancar nuevamente de cero. Agregar una configuración más de teclado, eligiendo la tecla que prefieran para este objetivo, que si se presiona, vuelva a configurar el juego con los objetos en su estado inicial.
 
-### Mejorar los movimientos de los chicos
-
-Modificar la lógica de movimiento de modo que:
-  - Rolo y Tito no puedan bajar más allá del y = 0.
-  - Rolo y Tito no puedan subir más arriba del suelo, donde se encuentra la casa.
-  - Si un personaje que se encuentra en el borde derecho o izquierdo de la pantalla se mueve por fuera de la misma, hacer que aparezca del otro lado (porque dio la vuelta a la manzana). Esto también implica que si Tito se encuentra en el borde izquierdo, Juanita debería aparecer en el extremo derecho, a la misma altura que Tito.
-  
-> Ver el archivo `movimientos.wlk`, además del describe BONUS en `movimientosYUbicaciones.wtest`.
-
-### Elementos visuales para el estado de la casa
-
-Las consignas no indican cómo graficar el caos y la cantidad de caramelos que quedan en la casa.
-Una forma simple puede ser agregar un componente visual donde se muestre esta información como texto en la parte superior de la pantalla, pero son libres de ponerse creativos.
-
-Por ejemplo, el nivel de caos podría traducirse en basura tirada cerca de la casa, y a mayor nivel de caos, más basura podría mostrarse en escena. Lo que les genere curiosidad para tratar de resolver, háganlo, suena como un planazo!
-
 ### Sonidos
 
 Pueden agregar un sonido asociado a cada habitante de la casa, para ayudar a distinguir quién fue que abrió la puerta en cada oportunidad, más allá de lo que se pueda deducir por el texto del saludo.
+
+### Más elementos visuales
+
+Ya mostramos los caramelos y el caos, pero hay mucho más para hacer. Por ejemplo, el nivel de caos también podría traducirse en basura tirada cerca de la casa, y a mayor nivel de caos, más basura podría mostrarse en escena. O los vestidores podrían avisar algo cuando alguien se cambia. Lo que les genere curiosidad para tratar de resolver, háganlo, suena como un planazo!
