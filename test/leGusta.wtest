@@ -3,11 +3,6 @@ import habitantes.*
 
 // Dificultad: Fácil!
 
-/*
- * Ojo: acá la única que tiene opinión sobre los disfraces es Azucena.
- * A Jorge y a Sandra les da igual de qué venga disfrazado el chico.
- */
-
 describe "Saber si a Azucena le gusta un disfraz" {
 
 	test "A Azucena le gusta un disfraz adorable" {

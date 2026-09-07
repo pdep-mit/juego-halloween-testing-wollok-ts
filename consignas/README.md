@@ -20,7 +20,7 @@ El juego ya tiene configuradas las siguientes teclas:
 Los chicos que tenemos que modelar para nuestro juego son:
 - **Tito**, que cuando visita una casa pide caramelos y aumenta el caos de la misma en una unidad.
 - **Juanita**, la hermana menor de Tito, que cuando visita una casa sólo pide caramelos.
-- **Rolo**, que no está interesado en los caramelos por eso ni se disfraza; cuando visita una casa lo único que hace es aumentar el caos en 5 unidades.
+- **Rolo**, que no está interesado en los caramelos por eso **ni se disfraza**; cuando visita una casa lo único que hace es aumentar el caos en 5 unidades.
 
 La casa que vamos a usar para nuestro juego tiene 3 habitantes, que se van rotando para abrir la puerta y dar caramelos a los chicos que los pidan:
 - **Azucena**, la única a la que le importa de qué viene disfrazado el chico.
@@ -72,11 +72,17 @@ Todos los habitantes entienden `quiereDarleA(unChico)`, pero cada uno lo decide 
 - **Jorge** da un número al azar entre 5 y 15 cuando hay al menos 50 caramelos en la casa; de lo contrario baja su ración a 4.
 - **Sandra** da 8 caramelos cuando la casa está en orden (si su nivel de caos es menor a 3), caso contrario da 2 caramelos.
 
-Notar que **la única que necesita mirar al chico es Azucena**: a Jorge y a Sandra les da exactamente lo mismo quién les toque y de qué venga disfrazado. Así y todo, los tres entienden el mismo mensaje.
+> Notar que **la única que necesita mirar al chico es Azucena**: a Jorge y a Sandra les da exactamente lo mismo quién les toque y de qué venga disfrazado. Así y todo, **los tres entienden el mismo mensaje**.
 
 Sobre el azar de Jorge: él no tira los dados por su cuenta, se lo pide a un colaborador que sabe dar números al azar. Y ese colaborador **se le puede cambiar** (es su `generadorDeAzar`), justamente para que en las pruebas podamos ponerle uno que sea predecible y así saber contra qué comparar.
 
 > Definir las pruebas necesarias en `leGusta.wtest` y `cuantosCaramelosDarian.wtest`. **Antes de arrancar con los tests de Jorge, leer el comentario que está arriba del describe en `cuantosCaramelosDarian.wtest`**: explica la técnica y ya les deja armado el colaborador predecible que van a necesitar. Uno de los tests de Jorge viene resuelto como ejemplo.
+
+#### Caso para pensar: combinación Rolo y Azucena
+
+Como ya se explicó, la respuesta de **Azucena** depende del disfraz del chico, y **Rolo no se disfraza**.
+
+En teoría no debería suceder que se ejecute `azucena.quiereDarleA(rolo)` en el contexto del juego, porque Rolo no va a pedir caramelos al visitar la casa (ver punto siguiente). La pregunta es: ¿qué sería esperable que pase si se evalúa esa consulta?
 
 ### 4. La visita a la casa
 
