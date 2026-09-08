@@ -2,7 +2,7 @@ import wollok.game.*
 import habitantes.*
 
 object casa {
-	const property position = game.center().right(2).up(1)
+	const property position = game.center()
 	var property caramelos = 100
 	var property caos = 0
 	var property quienAbreLaPuerta = azucena
