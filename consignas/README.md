@@ -137,6 +137,12 @@ Después de saludar y antes de que le toque al siguiente, el habitante que abri�
 
 > Ver el describe BONUS en `visitasALaCasa.wtest`.
 
+### Avanzando el tiempo
+
+Nuestro juego transcurre durante la noche de halloween, comenzando con el ocaso (las 6 de la tarde) y terminando a la medianoche
+
+Se pide mostrar el reloj (descomentar la linea en `gameCofiguration.wlk`) y hacer que avance una hora por minuto que pase en la realidad, cuando marque las 12 deberia terminar el juego.
+
 ### Reinicio de juego
 
 El juego de base no tiene forma de reiniciar el estado para arrancar nuevamente de cero. Agregar una configuración más de teclado, eligiendo la tecla que prefieran para este objetivo, que si se presiona, vuelva a configurar el juego con los objetos en su estado inicial.

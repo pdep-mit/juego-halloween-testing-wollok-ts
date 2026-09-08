@@ -1,3 +1,4 @@
+import reloj.*
 import chicos.*
 import disfraces.*
 import habitantes.*
@@ -33,6 +34,7 @@ object config {
 		game.addVisual(contadorDeCaramelos)
 		game.addVisual(vestidorDeSuperheroes)
 		game.addVisual(vestidorDeAntiheroes)
+    // game.addVisual(reloj)
 		game.addVisual(rolo)
 		game.addVisual(tito)
 		game.addVisual(juanita)
