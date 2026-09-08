@@ -1,0 +1,34 @@
+import casa.*
+
+// Dificultad: Fácil!
+
+describe "Cómo se ve la casa según el caos que tiene" {
+
+	test "La casa se ve tranquila mientras está en orden" {
+		casa.caos(2)
+		assert.equals("casa.png", casa.image())
+	}
+
+	test "La casa se ve desordenada cuando el caos empieza a subir" {
+		casa.caos(3)
+		assert.equals("casa-desordenada.png", casa.image())
+	}
+
+	test "La casa se ve embrujada cuando el caos es alto" {
+		casa.caos(10)
+		assert.equals("casa-embrujada.png", casa.image())
+	}
+}
+
+describe "El contador de caramelos" {
+
+	test "Muestra cuántos caramelos quedan en la casa" {
+		casa.caramelos(37)
+		assert.equals("Caramelos: 37", contadorDeCaramelos.text())
+	}
+
+	test "Se actualiza cuando la casa se queda sin caramelos" {
+		// TODO testear
+		assert.fail("Falta implementar")
+	}
+}

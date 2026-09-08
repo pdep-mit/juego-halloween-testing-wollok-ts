@@ -3,33 +3,19 @@ import habitantes.*
 
 // Dificultad: Fácil!
 
-describe "Saber si a alguien le gusta un disfraz" {
+describe "Saber si a Azucena le gusta un disfraz" {
 
-	test "A azucena no le gustan los disfraces que no son adorables" {
+	test "A Azucena le gusta un disfraz adorable" {
 		// TODO testear
 		assert.fail("Falta implementar")
 	}
-	test "A azucena le gusta un disfraz adorable" {
+
+	test "A Azucena no le gusta un disfraz que da miedo" {
 		// TODO testear
 		assert.fail("Falta implementar")
 	}
-	
-	test "A Sandra le gustan disfraces mas tiernos que aterradores" {
-		// TODO testear
-		assert.fail("Falta implementar")
-	}
-	
-	test "A Sandra no le gusta un disfraz mas aterrador que tierno" {
-		// TODO testear
-		assert.fail("Falta implementar")
-	}
-	
-	test "A Jorge no le gustan disfraces que no son terrorificos" {
-		// TODO testear
-		assert.fail("Falta implementar")
-	}
-	
-	test "A Jorge le gustan los disfraces terrorificos" {
+
+	test "A Azucena no le gusta un disfraz que no da miedo pero tampoco es tan tierno" {
 		// TODO testear
 		assert.fail("Falta implementar")
 	}
