@@ -1,5 +1,27 @@
 # Práctica grupal - PdeP MiT 2026
 
+## Nombres de integrantes del grupo
+
+Completen acá sus nombres, haciendo un commit distinto cada uno:
+
+- 
+- 
+- 
+- 
+- 
+
+¡Recuerden los pasos para subir cambios!:
+
+1 - `git pull` para bajarse los cambios más nuevos.
+
+2 - Hacen el cambio en sus archivos locales.
+
+3 - `git add .` para agregar todos los cambios que hayan hecho.
+
+4 - Crean un commit nuevo con: `git commit -m "NOMBRE DEL COMMIT"`
+
+5 - `git push` suben sus cambios para que esten disponibles para el resto.
+
 ## Objetivos
 
 - Trabajar en equipo usando un repositorio compartido.
