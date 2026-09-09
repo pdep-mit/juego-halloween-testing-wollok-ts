@@ -24,8 +24,8 @@ Los chicos que tenemos que modelar para nuestro juego son:
 
 La casa que vamos a usar para nuestro juego tiene 3 habitantes, que se van rotando para abrir la puerta y dar caramelos a los chicos que los pidan:
 - **Azucena**, la única a la que le importa de qué viene disfrazado el chico.
-- **Jorge**, que es medio manirroto cuando la despensa está llena.
-- **Sandra**, que da según cómo esté la casa.
+- **Jorge**, que es más generoso cuando la despensa está llena.
+- **Sandra**, que da golosinas según cómo esté la casa.
 
 Inicialmente hay 100 caramelos en la casa, un nivel 0 de caos y es Azucena quien abre la puerta.
 
@@ -87,7 +87,7 @@ En teoría no debería suceder que se ejecute `azucena.quiereDarleA(rolo)` en el
 ### 4. La visita a la casa
 
 Cada vez que la casa recibe la visita de un chico debería pasar lo siguiente:
-- Se abre la puerta, y en consecuencia el chico pide caramelos y/o hace bullicio.
+- Se abre la puerta, y en consecuencia el chico pide caramelos y/o hace bullicio ("dulce o truco", como le dicen).
 - Se muestra un saludo saliendo de la casa, que depende de quién fue que abrió la puerta.
 - Le pasa el turno al siguiente habitante: una vez que los 3 hayan atendido a las visitas (primero Azucena, luego Jorge y luego Sandra), le debería tocar nuevamente a Azucena.
 
@@ -98,7 +98,7 @@ Los saludos que se muestran son:
 - Sandra saluda con un "¡Pasalo lindo y no hagas lío!" cuando la casa está en orden, y con un "¬¬" cuando no lo está.
 - Jorge saluda con un "¡Feliz Navidad!".
 
-En el caso de que luego de esta visita se termine la diversión, se espera un saludo que es independiente de quién abrió la puerta: "¡Suficiente por hoy! Nos vamos a dormir."
+En el caso de que luego de esta visita se termine la diversión (ver punto 6), se espera un saludo que es independiente de quién abrió la puerta: "¡Suficiente por hoy! Nos vamos a dormir."
 
 En el juego, la visita se dispara sola cuando un chico pasa por la puerta de la casa; eso ya está configurado.
 
@@ -124,11 +124,17 @@ Saber si se terminó la diversión, que se cumple si no hay más caramelos en la
 - Se espera que se muestre un cartel explicando que el juego terminó.
 - Además cambia el saludo de la casa, como se explicó en el punto anterior.
 
-> Las pruebas de cuándo se termina la diversión están en `saludos.wtest`. El cartel hay que armarlo en el método `mostrarFinDelJuego()` de `gameConfiguration.wlk`.
+> Las pruebas de cuándo se termina la diversión están en `saludos.wtest`. El cartel (que debería ser un asset más que ustedes armen) hay que mostrarlo en el método `mostrarFinDelJuego()` de `gameConfiguration.wlk`.
+
+### 7. Avanzando el tiempo
+
+Nuestro juego transcurre durante la noche de Halloween, comenzando con el ocaso (las 6 de la tarde) y terminando a la medianoche.
+
+Se pide mostrar el reloj (descomentar la linea en `gameCofiguration.wlk`) y hacer que avance una hora por minuto que pase en la realidad; cuando marque las 12 debería terminar el juego.
 
 ## BONUS: Requerimientos adicionales por si quedaron manija
 
-### La despedida de los habitantes
+### La retirada de los habitantes
 
 Después de saludar y antes de que le toque al siguiente, el habitante que abrió la puerta podría hacer algo más:
   - Si quien abrió fue Azucena y quedan al menos 5 caramelos en la casa, se come uno.
@@ -136,12 +142,6 @@ Después de saludar y antes de que le toque al siguiente, el habitante que abri�
   - Sandra no hace nada en particular.
 
 > Ver el describe BONUS en `visitasALaCasa.wtest`.
-
-### Avanzando el tiempo
-
-Nuestro juego transcurre durante la noche de halloween, comenzando con el ocaso (las 6 de la tarde) y terminando a la medianoche
-
-Se pide mostrar el reloj (descomentar la linea en `gameCofiguration.wlk`) y hacer que avance una hora por minuto que pase en la realidad, cuando marque las 12 deberia terminar el juego.
 
 ### Reinicio de juego
 
@@ -151,6 +151,4 @@ El juego de base no tiene forma de reiniciar el estado para arrancar nuevamente 
 
 Pueden agregar un sonido asociado a cada habitante de la casa, para ayudar a distinguir quién fue que abrió la puerta en cada oportunidad, más allá de lo que se pueda deducir por el texto del saludo.
 
-### Más elementos visuales
-
-Ya mostramos los caramelos y el caos, pero hay mucho más para hacer. Por ejemplo, el nivel de caos también podría traducirse en basura tirada cerca de la casa, y a mayor nivel de caos, más basura podría mostrarse en escena. O los vestidores podrían avisar algo cuando alguien se cambia. Lo que les genere curiosidad para tratar de resolver, háganlo, suena como un planazo!
+También pueden agregar un sonido para el reloj, para que suene cuando marque las 12.
