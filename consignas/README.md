@@ -49,7 +49,7 @@ Los disfraces que pueden usar Tito y/o Juanita son los siguientes. Cada uno sabe
 - el disfraz de `venom` tiene 0 ternura y terror 8,
 - el disfraz de `harleyQuinn` tiene ternura 9 y terror 2.
 
-Tanto Tito como Juanita usan el disfraz de `superheroe` al iniciar el juego, y pueden cambiarlo mandándoles el mensaje `disfraz(nuevoDisfraz)`.
+Tanto Tito como Juanita usan el disfraz de `superheroe` al iniciar el juego, pero puede ser cambiado.
 
 En el barrio hay dos vestidores: `vestidorDeSuperheroes` y `vestidorDeAntiheroes`. Cuando un chico pasa por encima de uno, el vestidor lo viste (`vestir(unChico)`), y lo que pasa entonces depende de a quién le tocó:
 - En el vestidor de superhéroes, tanto Tito como Juanita salen disfrazados de `superheroe`.
